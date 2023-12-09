@@ -1,0 +1,148 @@
+.picture {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 100px;
+    bottom: 0;
+}
+
+.table-bottom {
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #d7712d;
+}
+
+.table-middle {
+    width: 20px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 20px;
+    background-color: #d7712d;
+}
+
+.table-top {
+    width: 90px;
+    height: 10px;
+    position: absolute;
+    bottom: 70px;
+    background-color: #d7712d;
+}
+
+.chair-shortleg {
+    width: 8px;
+    height: 40px;
+    position: absolute;
+    left: 5px;
+    bottom: 0;
+    background-color: #d7712d;
+}
+
+#chair1{
+    position: absolute;
+    left: 65px;
+    bottom: 0;
+    transform: scale(-1,1);
+}
+
+#chair2{
+    position: absolute;
+    left: 135px;
+    bottom: 0;
+}
+
+.chair-longleg {
+    width: 30px;
+    height: 100px;
+    position: absolute;
+    left: 40px;
+    bottom: 0;
+    border-radius: 50%;
+    box-shadow: -5px 0 0 1px #d7712d;
+}
+
+.chair-seat {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40px;
+    height: 10px;
+    position: absolute;
+    bottom: 40px;
+    background-color: #d7712d;
+}
+
+.chair-seat-dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: saddlebrown;
+}
+
+.teapot{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 100px;
+    bottom: 75px;
+}
+
+.teapot-spout{
+    width: 20px;
+    height: 5px;
+    position: absolute;
+    right: 15px;
+    bottom: 25px;
+    background-color: hotpink;
+    transform: rotate(30deg) skew(-30deg);
+}
+
+.teapot-handle{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    background-color: transparent;
+    box-shadow: 0 0 0 2px hotpink;
+}
+
+.teapot-top{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 40px;
+    background-color: hotpink;
+}
+
+.teapot-middle{
+    width: 30px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 25px;
+    background-image: radial-gradient(circle at 30% 30%, white, deeppink);
+}
+
+.teapot-bottom{
+    width: 50px;
+    height: 35px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    background-image: radial-gradient(circle at 30% 30%, white, deeppink);
+}

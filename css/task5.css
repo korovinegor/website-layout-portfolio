@@ -1,0 +1,11 @@
+﻿* {
+    box-sizing: border-box;
+    font-family: Consolas, sans-serif;
+}
+
+#test *{
+    width: 25em;
+    height: fit-content;
+    padding: 10px;
+    margin: 10px;
+}
