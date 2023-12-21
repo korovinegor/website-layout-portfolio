@@ -1,0 +1,574 @@
+/* Fonts import */
+
+@font-face {
+    font-family: Ubuntu;
+    src: local("Ubuntu"), url("..\\fonts\\Ubuntu-Regular.ttf") format("ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: local("Ubuntu Bold"), url("..\\fonts\\Ubuntu-Regular.ttf") format("ttf");
+    font-weight: 700;
+}
+
+
+/* Settings and variables */
+
+:root {
+    font-size: 20px;
+    --background-color: white;
+    --background-tint-color: #dddddd;
+    --foreground-color: black;
+    --highlight-color: rgb(255, 255, 156);
+    --figure-color: #999999;
+    --primary-font: Ubuntu, consolas, sans-serif;
+    --secondary-font: consolas, sans-serif;
+    --cursor-default: url("..\\media\\cursor_default.svg") 0 0;
+    --cursor-pointer: url("..\\media\\cursor_pointer.svg") 8 0;
+    --cursor-knife: url("..\\media\\cursor_knife.svg") 1 0;
+    --cursor-text: url("..\\media\\cursor_text.svg") 8 12;
+    --cursor-scroll: url("..\\media\\cursor_scroll.svg") 12 12;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    cursor: var(--cursor-default), default;
+}
+
+
+/* Buttons and textboxes */
+
+.button-logout,
+.button-back {
+    width: 1.7rem;
+    height: auto;
+    justify-content: center;
+    align-content: center;
+    margin: 1rem;
+}
+
+.rect-button {
+    margin: 0.5em 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: var(--primary-font);
+    border: 3px solid var(--foreground-color);
+    border-radius: 0.4rem;
+    box-shadow: 0 0.6rem 0 0 var(--foreground-color);
+}
+
+.rect-button:hover {
+    transform: translateY(0.1rem);
+    box-shadow: 0 0.5rem 0 0 var(--foreground-color);
+}
+
+.rect-button:active {
+    transform: translateY(0.6rem);
+    box-shadow: none;
+}
+
+.rect-button>img {
+    width: auto;
+    height: 50%;
+}
+
+.rect-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--primary-font);
+    border: 3px solid var(--foreground-color);
+    border-radius: 0.2rem;
+}
+
+.text-score::after{
+    content: "";
+    width: 0.7em;
+    height: 0.7em;
+    display: inline-block;
+    background-image: url("..\\media\\star.svg");
+    background-size: 100%;
+}
+
+.clickable {
+    cursor: var(--cursor-pointer), pointer;
+}
+
+
+/* body, wrapper, page */
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#wrapper-game {
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* header, main */
+
+.header-page {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 5px solid var(--foreground-color);
+}
+
+.header-page>h1,
+.header-page>h2 {
+    margin: 0.5rem;
+    font-family: var(--secondary-font);
+    font-size: 1rem;
+}
+
+.header-page>h1 {
+    font-weight: bold;
+}
+
+.header-page>h2 {
+    font-weight: normal;
+}
+
+.header-page>img {
+    height: 0.5rem;
+}
+
+.main-page {
+    width: 100%;
+    min-height: 0;
+    flex-grow: 1;
+}
+
+/* Authorization page */
+
+#page-authorization {
+    visibility: hidden;
+}
+
+#page-authorization>.main-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-authorization p {
+    margin: 0.3rem;
+    font-family: var(--primary-font);
+    font-size: 1.3rem;
+}
+
+#input-username {
+    width: 11rem;
+    height: 2rem;
+    padding: 0 0.7rem;
+    font-family: var(--secondary-font);
+    font-size: 1rem;
+    text-align: center;
+    border: 3px solid var(--foreground-color);
+    border-radius: 1rem;
+    outline: none;
+    cursor: var(--cursor-text), text;
+}
+
+
+/* Home page */
+
+#page-home {
+    visibility: hidden;
+}
+
+#page-home .button-logout {
+    position: absolute;
+}
+
+#page-home>.main-page>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-home .rect-button {
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.6rem;
+}
+
+
+/* Difficulty page */
+
+#page-difficulty {
+    visibility: hidden;
+}
+
+#page-difficulty .button-back {
+    position: absolute;
+}
+
+#page-difficulty>.main-page>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-difficulty h3 {
+    margin: 1rem 0;
+    font-family: var(--primary-font);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+#page-difficulty .rect-button {
+    width: 10rem;
+    height: 2.5rem;
+    font-size: 1.3rem;
+}
+
+
+/* Game (figures) page */
+
+#page-figures {
+    visibility: hidden;
+}
+
+#page-figures>.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#block-score {
+    width: 5.5rem;
+    height: 2rem;
+    margin: 0.6em 0;
+    font-family: var(--primary-font);
+    font-size: 1.3rem;
+}
+
+#svg-figure {
+    width: 100%;
+    flex-grow: 1;
+    cursor: var(--cursor-knife), default;
+}
+
+#svg-figure * {
+    cursor: var(--cursor-knife), default;
+}
+
+#svg-figure>polygon {
+    fill: var(--figure-color);
+}
+
+#svg-figure line {
+    stroke-width: 3px;
+    stroke-dasharray: 16px 4px;
+}
+
+#svg-figure>line {
+    stroke: var(--foreground-color);
+}
+
+#svg-figure>line>line {
+    stroke: var(--background-color);
+}
+
+#block-gameinfo {
+    width: 100%;
+    height: 10rem;
+    display: grid;
+    grid-template: "a a b" 1fr "c c d" 1fr "e f f" 1fr / 4rem 1fr 4rem;
+    align-items: center;
+}
+
+#block-gameinfo>* {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    border-top: 3px solid var(--foreground-color);
+}
+
+#block-gameinfo>p {
+    margin: 0;
+    font-family: var(--primary-font);
+    font-size: 1.3rem;
+}
+
+#block-gameinfo p:nth-child(1) {
+    grid-area: a;
+}
+
+#text-cuts {
+    justify-content: center;
+    grid-area: b;
+}
+
+#block-gameinfo p:nth-child(3) {
+    grid-area: c;
+}
+
+#text-figures {
+    justify-content: center;
+    grid-area: d;
+}
+
+#text-cuts,
+#text-figures {
+    border-left: 3px solid var(--foreground-color);
+}
+
+#text-time {
+    justify-content: center;
+    grid-area: e;
+}
+
+#block-gameinfo>div {
+    grid-area: f;
+}
+
+#block-gameinfo>div>div {
+    width: 100%;
+    height: 1.3rem;
+    grid-area: f;
+    justify-content: center;
+    border: 2px solid var(--foreground-color);
+}
+
+#block-time {
+    width: 100%;
+    height: 100%;
+    background-color: var(--foreground-color);
+}
+
+
+/* Game over page */
+
+#page-gameover {
+    visibility: hidden;
+}
+
+#page-gameover>.main-page {
+    display: grid;
+    grid-template-rows: 1fr 4fr min-content 2rem;
+    justify-items: center;
+    align-items: center;
+}
+
+#page-gameover h3 {
+    margin: 0;
+    font-family: var(--primary-font);
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+#page-gameover>.main-page>div {
+    width: min-content;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+}
+
+#page-gameover>.main-page>div>p {
+    margin: 0.2rem 0;
+    font-family: var(--secondary-font);
+    font-size: 1.3rem;
+    align-content: center;
+}
+
+#page-gameover .rect-score {
+    width: 7.5rem;
+    height: 3rem;
+    margin: 0.2em 0;
+    font-size: 1.6rem;
+}
+
+#page-gameover .rect-button {
+    width: 12rem;
+    height: 2rem;
+    font-size: 1.1rem;
+}
+
+
+/* Leaderboard page */
+
+#page-leaderboard {
+    visibility: hidden;
+}
+
+#page-leaderboard>.main-page {
+    display: flex;
+    flex-direction: column;
+}
+
+#table-leaderboard {
+    width: 100%;
+    min-height: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 3px solid var(--foreground-color);
+}
+
+#table-leaderboard th:nth-child(1),
+#table-leaderboard td:nth-child(1) {
+    width: 25%;
+    border-width: 0 3px 0 0;
+    border-style: solid;
+    border-color: var(--foreground-color);
+}
+
+#table-leaderboard th:nth-child(2),
+#table-leaderboard tbody td:nth-child(2) {
+    width: 50%;
+    border-width: 0 3px 0 0;
+    border-style: solid;
+    border-color: var(--foreground-color);
+}
+
+#table-leaderboard th:nth-child(3),
+#table-leaderboard td:nth-child(3) {
+    width: 25%;
+}
+
+#table-leaderboard th,
+#table-leaderboard td {
+    padding: 0.3rem;
+    font-family: var(--secondary-font);
+    font-size: 1rem;
+}
+
+#table-leaderboard td {
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+}
+
+#table-leaderboard thead,
+#table-leaderboard tr {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#table-leaderboard thead {
+    position: relative;
+    background-color: var(--background-tint-color);
+}
+
+#table-leaderboard tr:not(#tablerow-currentusername) {
+    border-bottom: 3px solid var(--foreground-color);
+}
+
+#table-leaderboard tbody {
+    flex-grow: 1;
+    padding: 0;
+    position: relative;
+    display: block;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#table-leaderboard tbody * {
+    cursor: var(--cursor-scroll), default;
+}
+
+#tablerow-currentusername {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    background-color: var(--highlight-color);
+}
+
+
+/* Style of current user table row when it in the middle or sticks to top/bottom (5 rulesets) */
+.tablerow-borderbottom {
+    border-top: none;
+    border-bottom: 3px solid var(--foreground-color);
+}
+
+.tablerow-bordertop {
+    border-top: 3px solid var(--foreground-color);
+    border-bottom: none;
+}
+
+.tablerow-shadowtop::before,
+.tablerow-shadowbottom::after {
+    content: "";
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    display: block;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.3), transparent);
+}
+
+.tablerow-shadowtop::before {
+    transform: translateY(-100%) scaleY(-1);
+}
+
+.tablerow-shadowbottom::after {
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+}
+
+/* Only for WebKit browsers */
+#table-leaderboard tbody::-webkit-scrollbar {
+    display: none;
+}
+
+/* Media queries */
+
+@media only screen and (min-width: 601px){
+
+    .header-page{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .header-page>img{
+        transform: rotate(-90deg) scale(0.75);
+    }
+
+}
+
+@media only screen and (min-width: 769px){
+
+    :root{
+        font-size: 26px;
+    }
+
+    #wrapper-game{
+        width: 700px;
+        border-left: 5px solid var(--foreground-color);
+        border-right: 5px solid var(--foreground-color);    
+    }
+
+}
