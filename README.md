@@ -1,4 +1,4 @@
-This is a site made during a website layout education course. It is written in pure HTML, CSS and JS.
+This is a site made during a website layout and prototyping education course. It is written in pure HTML, CSS and JS.
 
 Site consists of:
 * home page (.\index.html),
